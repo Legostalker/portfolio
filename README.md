@@ -1,50 +1,51 @@
-# Bedko — Game Artist Portfolyosu
+# bedkoarts — stüdyo sitesi
 
-Renkli, galeri gibi gezilen tek sayfalık portfolyo sitesi. Kurulum gerektirmez; sade HTML, CSS ve JavaScript ile yazıldı. Türkçe ve İngilizce arasında geçiş yapılabilir.
+bedkoarts bağımsız oyun stüdyosunun tek sayfalık sitesi: www.bedkoarts.com. Kurulum gerektirmez; sade HTML, CSS ve JavaScript ile yazıldı. Türkçe ve İngilizce arasında geçiş yapılabilir.
 
-## Nasıl çalışıyor
+Eski kişisel portfolyo (Bedirhan Köse · Game Artist) `bedirhan-kose-portfolyo` dalında, bütün görselleriyle birlikte duruyor.
 
-- **Salonlar:** Eserler dört renkli salonda sergileniyor: Çevre & Level, Karakterler, Oyunlarım ve Animasyon.
-- **Sergi odası:** Bir esere tıklayınca tüm görselleri büyük boyutta açılır. Önceki/sonraki okları ve klavyedeki ← → tuşlarıyla bütün galeri baştan sona gezilebilir.
-- **Paylaşılabilir bağlantılar:** Her eserin kendi adresi var, örneğin `index.html#/fun-world`.
-- **Dil:** Ziyaretçinin tarayıcı diline göre Türkçe ya da İngilizce açılır, sağ üstteki düğmeyle değiştirilebilir.
+## Tasarımın dili
 
-## Görüntüleme
+- **Renkler:** Kırık beyaz zemin, taş grisi yüzeyler, kömür rengi yazı. Tek vurgu rengi kor turuncusu; yalnızca adın sonundaki nokta, etiket çizgileri ve bağlantı altı çizgilerinde kullanılıyor.
+- **Yazı:** Başlıklarda Fraunces, metinlerde Schibsted Grotesk.
+- **Fırça izleri:** `assets/` içindeki SVG'ler. Hepsi tek renkli maske olarak kullanılıyor, rengini `css/style.css` belirliyor. Adın arkasındaki geniş darbe (`sweep.svg`), etiketlerin önündeki kısa darbe (`underline.svg`), kor noktası (`daub.svg`) ve görsellerin fırçayla biten kenarları (`edge-*.svg`) bunlardan oluşuyor.
+- **Hareket:** Yalnızca yavaş belirme ve açılışta fırça darbesinin boyanması. "Hareketi azalt" ayarı açık olan ziyaretçilerde hiçbiri oynamaz.
 
-`index.html` dosyasına çift tıkla, tarayıcıda açılır.
+Fırça izleri şimdilik kodla üretildi. Kendi boyadığın parçalar gelince aynı adla, siyah ya da tek renk ve şeffaf zeminli PNG veya SVG olarak `assets/` klasörüne koyman yeterli. CSS'te dosya uzantısını değiştirmen gerekebilir.
 
-## Kendi içeriğini düzenleme
+## Oyun ekleme ve düzenleme
 
-| Ne değişecek | Nerede |
+Bütün oyunlar `js/games.js` içindeki `GAMES` listesinde. Dosyanın başındaki açıklama her alanı anlatıyor. Kısaca:
+
+| Alan | Ne işe yarar |
 |---|---|
-| Eserler, açıklamalar, görseller, etiketler | `js/data.js` içindeki `PROJECTS` listesi |
-| Salon adları, açıklamaları, renkleri | `js/data.js` içindeki `HALLS` listesi |
-| E-posta adresi | `js/main.js` içindeki `CONTACT_EMAIL` |
-| Girişteki kolajda görünen eserler | `js/main.js` içindeki `FEATURED` |
-| Arayüz metinleri (Türkçe/İngilizce) | `js/main.js` içindeki `STRINGS` |
-| Hakkımda bölümündeki araçlar | `index.html` içindeki `chips` listesi |
-| Genel renkler ve yazı tipleri | `css/style.css` en üstteki `:root` bölümü |
+| `title` | Oyunun adı |
+| `layout` | Yerleşim: `wide`, `right`, `left` ya da `banner` |
+| `tone` | Görsel gelene kadar yer tutucuyu boyayan iki renk |
+| `cover` | Kapak görseli, ör. `images/overnight/kapak.jpg` |
+| `images` | Kapağın altında görünecek diğer görseller |
+| `tr`, `en` | Kısa açıklama; boş bırakılırsa görünmez |
+| `links` | Steam, itch.io, fragman gibi bağlantılar |
 
-Yeni bir eser eklemek için `js/data.js` dosyasının başındaki örnek bloğu kopyalayıp doldurman yeterli. Eser kendi salonunda tarihine göre otomatik sıralanır. Sergi odasındaki gezinti sırası da buna göre oluşur.
+Kapak görseli yokken oyun, kendi tonlarıyla boyanmış ve "Görseller hazırlanıyor" yazan bir yer tutucuyla görünür.
 
-Eserin bir videosu varsa YouTube kimliğini ekle: `video: 'dQw4w9WgXcQ'`. Kimlik, `youtube.com/watch?v=` ifadesinden sonra gelen kısımdır. Video, sergi odasında görsellerin üstünde gösterilir.
-
-## Görseller
-
-Bütün görseller eski Wix sitesinden orijinal boyutlarıyla `images/` klasörüne indirildi. Site artık Wix'e bağlı değil. Klasör yapısı:
+Görseller için klasör yapısı:
 
 ```
 images/
-  fun-world/
-    01.jpg      ← kapak (sergi odasında ilk görsel)
-    02.jpg …    ← albümün geri kalanı
-    thumb.jpg   ← kartlarda görünen küçük sürüm (~1000 px)
+  overnight/
+    kapak.jpg   ← geniş kapak (en az 2400 px genişlik)
+    01.jpg …    ← diğer görseller
 ```
 
-Yeni bir eser eklerken `thumb.jpg` hazırlamak zorunlu değil; yoksa kapak görseli kullanılır. Ama sayfanın hızlı açılması için kapak görselinin genişliği 1000 px civarında olan bir kopyasını `thumb.jpg` olarak eklemen iyi olur. Büyük görseller için genişlik 2000–2500 px yeterli.
+## Diğer metinler
 
-## Yayınlama (ücretsiz)
+| Ne değişecek | Nerede |
+|---|---|
+| Arayüz metinleri (Türkçe/İngilizce) | `js/main.js` içindeki `STRINGS` |
+| E-posta adresi | `js/main.js` içindeki `CONTACT_EMAIL` |
+| Renkler ve yazı tipleri | `css/style.css` en üstteki `:root` bölümü |
 
-- **Netlify:** [app.netlify.com/drop](https://app.netlify.com/drop) adresine `portfolio` klasörünü sürükleyip bırak. Sonra Domain settings bölümünden `bedkoarts.com` alan adını bağlayabilirsin.
-- **GitHub Pages:** Dosyaları bir GitHub deposuna yükle ve Settings → Pages bölümünden yayına al.
-- **Alan adı:** `bedkoarts.com` Wix üzerinden alındıysa, Wix'ten başka bir sağlayıcıya taşıyabilir ya da DNS kayıtlarını Netlify'a yönlendirebilirsin.
+## Yayın
+
+Site GitHub Pages üzerinden yayınlanıyor. Bakım sırasında Pages `bakim` dalını yayınlıyor; o dalda yalnızca bakım sayfası var. Asıl site `main` dalında. Siteyi yeniden açmak için GitHub'da Settings → Pages bölümünde kaynağı `main` dalına almak yeterli.
