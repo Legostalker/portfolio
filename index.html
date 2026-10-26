@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bedko — Bakımdayız · Under maintenance</title>
+  <meta name="description" content="Bedirhan Köse — Game Artist. Galeri yeniden düzenleniyor, çok yakında açılıyor. The gallery is being rehung and reopens soon.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#fff7ec">
+  <meta name="color-scheme" content="light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    /* Bakım sayfası — sitenin renkleri ve tipografisiyle, tek dosya */
+    :root {
+      --bg: #fff7ec;
+      --paper: #ffffff;
+      --ink: #1d1a2c;
+      --ink-soft: #4a4560;
+      --brand: #f0473d;
+      --teal: #0fb5a4;
+      --pink: #ff5a8a;
+      --sun: #ffb321;
+      --violet: #7a5cff;
+
+      --font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+      --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+      --border: 2.5px solid var(--ink);
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body { overflow-x: clip; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      background:
+        radial-gradient(circle at 1px 1px, rgba(29, 26, 44, 0.09) 1.2px, transparent 0) 0 0 / 26px 26px,
+        var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    /* Üst şerit */
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 22px clamp(16px, 4vw, 48px);
+    }
+
+    .logo {
+      display: inline-block;
+      padding: 4px 14px;
+      background: var(--brand);
+      border: var(--border);
+      border-radius: 10px;
+      box-shadow: 3px 3px 0 var(--ink);
+      transform: skewX(-8deg);
+    }
+
+    .logo span {
+      display: inline-block;
+      color: var(--paper);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-style: italic;
+      font-size: 1.35rem;
+      letter-spacing: 0.02em;
+      transform: skewX(8deg);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0;
+      padding: 6px 14px;
+      background: var(--paper);
+      border: var(--border);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .badge i {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--brand);
+      box-shadow: 0 0 0 0 rgba(240, 71, 61, 0.55);
+      animation: pulse 2s ease-out infinite;
+    }
+
+    /* Duvar: askıdaki tabela ve boş çerçeveler */
+    .wall {
+      position: relative;
+      display: grid;
+      place-items: center;
+      padding: 24px clamp(16px, 4vw, 48px) 48px;
+    }
+
+    .frame {
+      position: absolute;
+      border: var(--border);
+      border-radius: 6px;
+      box-shadow: 6px 6px 0 var(--ink);
+      animation: float 7s ease-in-out infinite alternate;
+    }
+
+    .frame::after {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      background: var(--paper);
+      border: var(--border);
+      border-radius: 3px;
+    }
+
+    .f1 { width: 150px; height: 190px; left: 3%;  top: 6%;     background: var(--teal);   rotate: -7deg; }
+    .f2 { width: 210px; height: 150px; right: 3%; top: 10%;    background: var(--pink);   rotate: 5deg;  animation-delay: -2s; }
+    .f3 { width: 170px; height: 130px; left: 5%;  bottom: 10%; background: var(--sun);    rotate: 4deg;  animation-delay: -4s; }
+    .f4 { width: 130px; height: 170px; right: 5%; bottom: 6%;  background: var(--violet); rotate: -5deg; animation-delay: -1s; }
+
+    .piece { width: min(880px, 100%); }
+
+    .hang {
+      position: relative;
+      z-index: 1;
+      padding-top: 84px;
+      transform-origin: 50% 0;
+      animation: swing 6s ease-in-out infinite alternate;
+    }
+
+    .nail {
+      position: absolute;
+      top: -7px;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      margin-left: -8px;
+      background: var(--ink);
+      border-radius: 50%;
+      box-shadow: inset -3px -3px 0 rgba(255, 255, 255, 0.25);
+    }
+
+    .strings {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      width: 100%;
+      height: 104px;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    .strings line { stroke: var(--ink); stroke-width: 2.5; stroke-linecap: round; }
+
+    .sign {
+      position: relative;
+      padding: clamp(28px, 5vw, 52px);
+      background: var(--paper);
+      border: var(--border);
+      border-radius: 32px;
+      box-shadow: 10px 10px 0 var(--ink);
+    }
+
+    .sign::before, .sign::after {
+      content: '';
+      position: absolute;
+      top: 14px;
+      width: 12px;
+      height: 12px;
+      background: var(--bg);
+      border: var(--border);
+      border-radius: 50%;
+    }
+
+    .sign::before { left: calc(15% - 6px); }
+    .sign::after { right: calc(15% - 6px); }
+
+    .langs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(28px, 5vw, 56px);
+      margin-top: 22px;
+    }
+
+    .langs section + section {
+      padding-left: clamp(28px, 5vw, 56px);
+      border-left: 2.5px dashed rgba(29, 26, 44, 0.3);
+    }
+
+    .flag {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 2px 10px;
+      border: var(--border);
+      border-radius: 8px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+    }
+
+    [lang="tr"] .flag { background: var(--sun); }
+    [lang="en"] .flag { background: var(--teal); color: var(--paper); }
+
+    h1, h2 {
+      margin: 0 0 14px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.75rem, 3.6vw, 2.6rem);
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+
+    .hl {
+      padding: 0 0.12em;
+      border-radius: 0.18em;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    [lang="tr"] .hl { background: #ffe3ec; }
+    [lang="en"] .hl { background: #ebe5ff; }
+
+    .langs p { margin: 0; color: var(--ink-soft); }
+
+    /* Bu arada: bağlantılar */
+    .meanwhile {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .meanwhile span {
+      width: 100%;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 9px 18px;
+      background: var(--paper);
+      border: var(--border);
+      border-radius: 999px;
+      box-shadow: 3px 3px 0 var(--ink);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.2s var(--spring), box-shadow 0.2s var(--spring);
+    }
+
+    .btn:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink); }
+    .btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+    .btn:focus-visible { outline: 3px solid var(--violet); outline-offset: 3px; }
+    .btn-mail { background: var(--brand); color: var(--paper); }
+
+    .bottom {
+      padding: 0 clamp(16px, 4vw, 48px) 24px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    @keyframes swing { from { rotate: -1.6deg; } to { rotate: 1.6deg; } }
+    @keyframes float { from { translate: 0 -6px; } to { translate: 0 6px; } }
+    @keyframes pulse {
+      70%  { box-shadow: 0 0 0 9px rgba(240, 71, 61, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(240, 71, 61, 0); }
+    }
+
+    @media (max-width: 1240px) {
+      .f1, .f4 { display: none; }
+      .f2 { top: 2%; right: 2%; width: 140px; height: 104px; }
+      .f3 { bottom: 4%; left: 2%; width: 120px; height: 92px; }
+    }
+
+    @media (max-width: 720px) {
+      .langs { grid-template-columns: 1fr; }
+      .langs section + section {
+        padding-left: 0;
+        padding-top: 28px;
+        border-left: 0;
+        border-top: 2.5px dashed rgba(29, 26, 44, 0.3);
+      }
+      .frame { display: none; }
+      .wall { padding-top: 8px; }
+      .hang { padding-top: 66px; }
+      .strings { height: 86px; }
+      .sign { border-radius: 24px; box-shadow: 7px 7px 0 var(--ink); }
+      .top .badge { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top">
+    <div class="logo" aria-label="Bedko"><span>BEDKO</span></div>
+    <p class="badge"><i></i>Bakımda · Under maintenance</p>
+  </header>
+
+  <main class="wall">
+    <div class="frame f1" aria-hidden="true"></div>
+    <div class="frame f2" aria-hidden="true"></div>
+    <div class="frame f3" aria-hidden="true"></div>
+    <div class="frame f4" aria-hidden="true"></div>
+
+    <div class="piece">
+      <div class="hang">
+        <span class="nail" aria-hidden="true"></span>
+        <svg class="strings" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="50" y1="0" x2="15" y2="100" vector-effect="non-scaling-stroke" />
+          <line x1="50" y1="0" x2="85" y2="100" vector-effect="non-scaling-stroke" />
+        </svg>
+
+        <article class="sign">
+          <div class="langs">
+            <section lang="tr">
+              <span class="flag">TR</span>
+              <h1>Duvarlar boyanıyor, <span class="hl">eserler yeniden asılıyor.</span></h1>
+              <p>Galeri kısa bir süreliğine kapalı. Kapılar çok yakında, yepyeni haliyle açılıyor.</p>
+            </section>
+            <section lang="en">
+              <span class="flag">EN</span>
+              <h2>Fresh paint on the walls, <span class="hl">new works on the hooks.</span></h2>
+              <p>The gallery is closed for a little while. Doors reopen very soon, with a brand-new look.</p>
+            </section>
+          </div>
+        </article>
+      </div>
+
+      <nav class="meanwhile" aria-label="Bağlantılar · Links">
+        <span>Bu arada · In the meantime</span>
+        <a class="btn" href="https://www.artstation.com/bedirhankose" target="_blank" rel="noopener">ArtStation ↗</a>
+        <a class="btn" href="https://www.instagram.com/bedkograph/" target="_blank" rel="noopener">Instagram ↗</a>
+        <a class="btn" href="https://www.linkedin.com/in/bedirhankose/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn btn-mail" id="mail" href="https://www.artstation.com/bedirhankose" target="_blank" rel="noopener">E-posta · Email</a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="bottom">© <span id="year">2026</span> Bedirhan Köse · Game Artist</footer>
+
+  <script>
+    // E-posta adresi botlar okumasın diye sayfa açılınca birleştirilir
+    var mail = document.getElementById('mail');
+    mail.href = 'mailto:' + ['bedirhankose7', 'gmail.com'].join('@');
+    mail.removeAttribute('target');
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
