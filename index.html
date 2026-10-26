@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bedko — Bedirhan Köse · Game Artist</title>
+  <meta name="description" content="Bedirhan Köse — oyunlar için çevre, karakter ve level tasarımı yapan Game Artist. Portfolyo galerisi.">
+  <meta name="theme-color" content="#fff7ec">
+  <meta name="color-scheme" content="light">
+  <meta property="og:title" content="Bedko — Bedirhan Köse · Game Artist">
+  <meta property="og:description" content="Oyunlar için çevre, karakter ve level tasarımları.">
+  <meta property="og:image" content="https://static.wixstatic.com/media/da1e3e_12264234314a49febe17e5f6318a965b~mv2.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://static.wixstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+  <a class="skip" href="#galeri" data-i18n="skip">İçeriğe geç</a>
+
+  <header class="site-header" id="header">
+    <a class="logo" href="#top" aria-label="Bedko — başa dön"><span>BEDKO</span></a>
+    <nav class="nav" id="nav" aria-label="Ana menü">
+      <a href="#galeri" data-i18n="nav_gallery">Galeri</a>
+      <a href="#hakkimda" data-i18n="nav_about">Hakkımda</a>
+      <a href="#iletisim" data-i18n="nav_contact">İletişim</a>
+      <a class="nav-cta" href="https://www.artstation.com/bedirhankose" target="_blank" rel="noopener">ArtStation ↗</a>
+    </nav>
+    <div class="header-actions">
+      <button class="lang-btn" id="lang-btn" type="button" aria-label="Switch to English">EN</button>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menüyü aç">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Giriş -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="hero-eyebrow"><span class="dot"></span><span data-i18n="hero_eyebrow">Game Artist · 3D Çevre & Karakter</span></p>
+        <h1 data-i18n-html="hero_title">Oyunlar için <mark class="m-teal">dünyalar</mark> ve <mark class="m-pink">karakterler</mark> yaratıyorum.</h1>
+        <p class="hero-lead" data-i18n="hero_lead">Merhaba, ben Bedirhan. Çevre, karakter ve level tasarımı yapıyor, boş zamanlarımda kendi oyunlarımı geliştiriyorum. Galeriyi salon salon gezmeye davetlisin.</p>
+        <div class="hero-actions">
+          <a class="btn btn-ink" href="#galeri" data-i18n="hero_cta">Galeriyi gez</a>
+          <a class="btn btn-line" href="https://www.artstation.com/bedirhankose" target="_blank" rel="noopener">ArtStation ↗</a>
+        </div>
+      </div>
+      <div class="collage" id="collage" aria-label="Öne çıkan eserler"></div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Environment</span><i>✦</i><span>Character</span><i>✦</i><span>Level Design</span><i>✦</i><span>Indie Games</span><i>✦</i><span>Animation</span><i>✦</i><span>Low-poly</span><i>✦</i><span>Fan Art</span><i>✦</i>
+        <span>Environment</span><i>✦</i><span>Character</span><i>✦</i><span>Level Design</span><i>✦</i><span>Indie Games</span><i>✦</i><span>Animation</span><i>✦</i><span>Low-poly</span><i>✦</i><span>Fan Art</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- Galeri girişi: salon kapıları -->
+    <section class="section" id="galeri">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker" data-i18n="gallery_kicker">Galeri haritası</p>
+          <h2 data-i18n="gallery_title">Hangi salondan başlayalım?</h2>
+          <p class="section-lead" data-i18n="gallery_lead">Her salonun kendi rengi var. Bir esere tıkla, sonra oklarla bir sonrakine geçerek galeriyi baştan sona gez.</p>
+        </div>
+        <div class="doors reveal" id="doors"></div>
+      </div>
+    </section>
+
+    <!-- Salonlar (js/data.js içeriğinden oluşturulur) -->
+    <div id="halls"></div>
+
+    <!-- Hakkımda -->
+    <section class="section about" id="hakkimda">
+      <div class="container about-grid">
+        <div class="about-card reveal">
+          <div class="about-badge"><span>BEDKO</span></div>
+          <p class="about-name">Bedirhan Köse</p>
+          <p class="about-role">Game Artist</p>
+          <dl class="facts">
+            <div><dt data-i18n="fact_focus">Odak</dt><dd data-i18n="fact_focus_v">Çevre, karakter, level tasarımı</dd></div>
+            <div><dt data-i18n="fact_bg">Geçmiş</dt><dd data-i18n="fact_bg_v">İç mimarlık, endüstriyel tasarım</dd></div>
+            <div><dt data-i18n="fact_where">Deneyim</dt><dd data-i18n="fact_where_v">Türkiye ve İtalya</dd></div>
+            <div><dt data-i18n="fact_works">Galeride</dt><dd><span id="work-count">33</span> <span data-i18n="fact_works_v">eser</span></dd></div>
+          </dl>
+        </div>
+        <div class="about-text reveal">
+          <p class="kicker" data-i18n="nav_about">Hakkımda</p>
+          <h2 data-i18n="about_title">Her dönemimi bir oyunla anlatabilirim.</h2>
+          <p data-i18n="about_p1">İç mimar olarak mezun oldum ve İtalya ile Türkiye’de çeşitli şirketlerde iç mimarlık, endüstriyel tasarım ve görsel sanat üzerine çalıştım. Farklı kültürlerle tanışmak, tasarıma ve dijital üretime bakışımı tamamen değiştirdi.</p>
+          <p data-i18n="about_p2">Oyunları hep sevdim. Zamanla kendimi oyunlara yönelik modelleme, render ve post-prodüksiyon üzerine uzmanlaştırdım: modeller, iç ve dış mekânlar, konseptler… Kısacası oyunlar için her türlü görselleştirme. Oynadığım oyunlar, izlediğim filmler, bir kez dinlediğim bir müzik bile bana referans olabiliyor.</p>
+          <p data-i18n="about_p3">Bugünlerde yeni bağımsız oyun fikirlerim için 3D ve 2D sanat üretiyor, kod yazıyorum.</p>
+          <ul class="chips" aria-label="Araçlar">
+            <li>Photoshop</li>
+            <li>After Effects</li>
+            <li>Unity</li>
+            <li>C#</li>
+            <li>Wacom</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- İletişim -->
+    <section class="contact" id="iletisim">
+      <div class="container">
+        <div class="contact-box reveal">
+          <p class="kicker" data-i18n="nav_contact">İletişim</p>
+          <h2 data-i18n="contact_title">Birlikte bir dünya kuralım mı?</h2>
+          <p data-i18n="contact_lead">Bir oyun projesi, iş birliği ya da sadece merhaba demek için yazabilirsin.</p>
+          <div class="contact-actions">
+            <a class="btn btn-ink" id="email-btn" href="#" data-i18n="contact_email">E-posta gönder</a>
+            <a class="btn btn-paper" href="https://www.artstation.com/bedirhankose" target="_blank" rel="noopener">ArtStation</a>
+            <a class="btn btn-paper" href="https://www.linkedin.com/in/bedirhankose/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn btn-paper" href="https://www.instagram.com/bedkograph/" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Bedirhan Köse · Bedko</p>
+      <a href="#top" data-i18n="back_top">Başa dön ↑</a>
+    </div>
+  </footer>
+
+  <!-- Eser görüntüleyici (sergi odası) -->
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-labelledby="v-title" hidden>
+    <div class="v-bar">
+      <span class="v-hall" id="v-hall"></span>
+      <span class="v-pos" id="v-pos"></span>
+      <div class="v-actions">
+        <button class="icon-btn" id="v-prev" type="button" aria-label="Önceki eser">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="icon-btn" id="v-next" type="button" aria-label="Sonraki eser">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="icon-btn" id="v-close" type="button" aria-label="Kapat">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="v-scroll" id="v-scroll">
+      <div class="v-layout">
+        <aside class="v-info">
+          <h2 id="v-title"></h2>
+          <p class="v-meta" id="v-meta"></p>
+          <ul class="v-tags" id="v-tags"></ul>
+          <p class="v-desc" id="v-desc"></p>
+          <p class="v-hint" data-i18n="viewer_hint">← → tuşlarıyla eserler arasında gezebilirsin.</p>
+        </aside>
+        <div class="v-media" id="v-media"></div>
+      </div>
+      <nav class="v-tour" id="v-tour" aria-label="Galeri turu"></nav>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

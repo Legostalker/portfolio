@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bedko — Sayfa bulunamadı</title>
+  <meta name="robots" content="noindex">
+  <script>
+    // Eski Wix sitesinin bağlantıları (ör. /fun-world, /about) yeni sitedeki karşılıklarına yönlenir
+    (function () {
+      var path = location.pathname.replace(/^\/+|\/+$/g, '').toLowerCase();
+      var pages = { about: '#hakkimda', contact: '#iletisim' };
+      var target = pages[path] || (/^[\w-]+$/.test(path) ? '#/' + path : '');
+      location.replace('/' + target);
+    })();
+  </script>
+  <style>
+    body { margin: 0; display: grid; place-items: center; min-height: 100vh; background: #fff7ec; color: #1d1a2c; font-family: system-ui, sans-serif; }
+    a { color: inherit; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <p>Yönlendiriliyorsun… <a href="/">Ana sayfaya git</a></p>
+</body>
+</html>
